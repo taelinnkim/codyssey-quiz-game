@@ -10,4 +10,11 @@ def show_menu():
     print("=" * 40)
 
 
+def get_menu_choice():
+    choice = input("메뉴를 선택하세요: ").strip()
+    return choice
+
+
 show_menu()
+selected_menu = get_menu_choice()
+print(f"선택한 메뉴: {selected_menu}")
