@@ -49,7 +49,24 @@ class QuizGame:
 
         for quiz in self.quizzes:
             quiz.display()
-            user_answer = int(input("정답 번호를 입력하세요 (1~4): "))
+
+            while True:
+                user_input = input("정답 번호를 입력하세요 (1~4): ").strip()
+
+                if user_input == "":
+                        print("입력값이 없습니다. 1~4 사이의 숫자를 입력하세요.")
+                        continue
+
+                try:
+                        user_answer = int(user_input)
+                except ValueError:
+                        print("숫자만 입력할 수 있습니다.")
+                        continue
+
+                if 1 <= user_answer <= 4:
+                        break
+
+                print("1~4 사이의 숫자를 입력하세요.")
 
             if quiz.check_answer(user_answer):
                 print("정답입니다!")
