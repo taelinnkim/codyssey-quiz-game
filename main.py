@@ -30,15 +30,22 @@ def get_menu_choice():
         print("1~5 사이의 숫자를 입력하세요.")
 
 
-show_menu()
-selected_menu = get_menu_choice()
-if selected_menu == 1:
-    print("퀴즈 풀기 기능을 선택했습니다.")
-elif selected_menu == 2:
-    print("퀴즈 추가 기능을 선택했습니다.")
-elif selected_menu == 3:
-    print("퀴즈 목록 기능을 선택했습니다.")
-elif selected_menu == 4:
-    print("점수 확인 기능을 선택했습니다.")
-elif selected_menu == 5:
-    print("퀴즈 게임을 종료합니다.")
+def main():
+    while True:
+        show_menu()
+        selected_menu = get_menu_choice()
+
+        if selected_menu == 1:
+            print("퀴즈 풀기 기능을 선택했습니다.")
+        elif selected_menu == 2:
+            print("퀴즈 추가 기능을 선택했습니다.")
+        elif selected_menu == 3:
+            print("퀴즈 목록 기능을 선택했습니다.")
+        elif selected_menu == 4:
+            print("점수 확인 기능을 선택했습니다.")
+        elif selected_menu == 5:
+            print("퀴즈 게임을 종료합니다.")
+            break
+
+
+main()
