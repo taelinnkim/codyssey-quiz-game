@@ -39,6 +39,11 @@ DEFAULT_QUIZZES = [
         3,
     ),
 ]
+class QuizGame:
+    def __init__(self, quizzes):
+        self.quizzes = quizzes
+        self.high_score = 0
+        
 def show_menu():
     print("=" * 40)
     print("        파이썬·컴퓨터 기초 퀴즈")
