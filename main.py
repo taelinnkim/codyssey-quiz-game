@@ -43,7 +43,26 @@ class QuizGame:
     def __init__(self, quizzes):
         self.quizzes = quizzes
         self.high_score = 0
-        
+
+    def play_quiz(self):
+        score = 0
+
+        for quiz in self.quizzes:
+            quiz.display()
+            user_answer = int(input("정답 번호를 입력하세요 (1~4): "))
+
+            if quiz.check_answer(user_answer):
+                print("정답입니다!")
+                score += 1
+            else:
+                print(f"오답입니다. 정답은 {quiz.answer}번입니다.")
+
+        print(f"\n최종 점수: {score}/{len(self.quizzes)}")       
+
+        if score > self.high_score:
+            self.high_score = score
+            print("새로운 최고 점수입니다!")
+            
 def show_menu():
     print("=" * 40)
     print("        파이썬·컴퓨터 기초 퀴즈")
@@ -77,12 +96,14 @@ def get_menu_choice():
 
 
 def main():
+    game = QuizGame(DEFAULT_QUIZZES)
+
     while True:
         show_menu()
         selected_menu = get_menu_choice()
 
         if selected_menu == 1:
-            print("퀴즈 풀기 기능을 선택했습니다.")
+             game.play_quiz()
         elif selected_menu == 2:
             print("퀴즈 추가 기능을 선택했습니다.")
         elif selected_menu == 3:
