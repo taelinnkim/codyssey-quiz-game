@@ -12,7 +12,33 @@ class Quiz:
 
     def check_answer(self, user_answer):
         return user_answer == self.answer
-
+DEFAULT_QUIZZES = [
+    Quiz(
+        "Python에서 화면에 내용을 출력할 때 사용하는 함수는?",
+        ["input()", "print()", "open()", "return()"],
+        2,
+    ),
+        Quiz(
+        "사용자의 키보드 입력을 받을 때 사용하는 함수는?",
+        ["input()", "print()", "type()", "len()"],
+        1,
+    ),
+        Quiz(
+        "Python에서 여러 값을 순서대로 저장하는 자료형은?",
+        ["int", "bool", "list", "str"],
+        3,
+    ),
+        Quiz(
+        "조건에 따라 다른 코드를 실행할 때 사용하는 문법은?",
+        ["if", "for", "class", "import"],
+        1,
+    ),
+        Quiz(
+        "Git에서 변경사항을 하나의 기록으로 저장하는 명령어는?",
+        ["git pull", "git clone", "git commit", "git status"],
+        3,
+    ),
+]
 def show_menu():
     print("=" * 40)
     print("        파이썬·컴퓨터 기초 퀴즈")
