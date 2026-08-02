@@ -128,3 +128,5 @@ codyssey-quiz-game/
 * GitHub
 * Visual Studio Code
 
+
+Git 저장소 복제 및 pull 실습을 완료했습니다.
