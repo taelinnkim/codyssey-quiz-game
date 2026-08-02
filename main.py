@@ -79,6 +79,9 @@ class QuizGame:
         if score > self.high_score:
             self.high_score = score
             print("새로운 최고 점수입니다!")
+
+    def show_score(self):
+        print(f"현재 최고 점수: {self.high_score}/{len(self.quizzes)}")
             
 def show_menu():
     print("=" * 40)
@@ -126,7 +129,7 @@ def main():
         elif selected_menu == 3:
             print("퀴즈 목록 기능을 선택했습니다.")
         elif selected_menu == 4:
-            print("점수 확인 기능을 선택했습니다.")
+            game.show_score()
         elif selected_menu == 5:
             print("퀴즈 게임을 종료합니다.")
             break
