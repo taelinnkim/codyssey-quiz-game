@@ -117,6 +117,10 @@ codyssey-quiz-game/
 
 ![퀴즈 추가](docs/screenshots/add_quiz.png)
 
+### 퀴즈 목록
+
+![퀴즈 목록](docs/screenshots/list.png)
+
 ### 최고 점수 확인
 
 ![최고 점수 확인](docs/screenshots/score.png)
