@@ -82,6 +82,12 @@ class QuizGame:
 
     def show_score(self):
         print(f"현재 최고 점수: {self.high_score}/{len(self.quizzes)}")
+
+    def show_quiz_list(self):
+        print("\n퀴즈 목록")
+
+        for number, quiz in enumerate(self.quizzes, start=1):
+            print(f"{number}. {quiz.question}")
             
 def show_menu():
     print("=" * 40)
@@ -127,7 +133,7 @@ def main():
         elif selected_menu == 2:
             print("퀴즈 추가 기능을 선택했습니다.")
         elif selected_menu == 3:
-            print("퀴즈 목록 기능을 선택했습니다.")
+            game.show_quiz_list()
         elif selected_menu == 4:
             game.show_score()
         elif selected_menu == 5:
