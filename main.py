@@ -88,6 +88,37 @@ class QuizGame:
 
         for number, quiz in enumerate(self.quizzes, start=1):
             print(f"{number}. {quiz.question}")
+
+    def add_quiz(self):
+        question = input("문제를 입력하세요: ").strip()
+
+        choices = []
+
+        for number in range(1, 5):
+            choice = input(f"{number}번 선택지를 입력하세요: ").strip()
+            choices.append(choice)
+
+        while True:
+            answer_input = input("정답 번호를 입력하세요 (1~4): ").strip()
+
+            if answer_input == "":
+                print("입력값이 없습니다. 1~4 사이의 숫자를 입력하세요.")
+                continue
+
+            try:
+                answer = int(answer_input)
+            except ValueError:
+                print("숫자만 입력할 수 있습니다.")
+                continue
+
+            if 1 <= answer <= 4:
+                break
+
+            print("1~4 사이의 숫자를 입력하세요.")  
+
+        new_quiz = Quiz(question, choices, answer)
+        self.quizzes.append(new_quiz)
+        print("퀴즈가 추가되었습니다.")                  
             
 def show_menu():
     print("=" * 40)
@@ -131,7 +162,7 @@ def main():
         if selected_menu == 1:
              game.play_quiz()
         elif selected_menu == 2:
-            print("퀴즈 추가 기능을 선택했습니다.")
+            game.add_quiz()
         elif selected_menu == 3:
             game.show_quiz_list()
         elif selected_menu == 4:
