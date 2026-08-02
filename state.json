@@ -1,0 +1,65 @@
+{
+  "quizzes": [
+    {
+      "question": "Python에서 화면에 내용을 출력할 때 사용하는 함수는?",
+      "choices": [
+        "input()",
+        "print()",
+        "open()",
+        "return()"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "사용자의 키보드 입력을 받을 때 사용하는 함수는?",
+      "choices": [
+        "input()",
+        "print()",
+        "type()",
+        "len()"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Python에서 여러 값을 순서대로 저장하는 자료형은?",
+      "choices": [
+        "int",
+        "bool",
+        "list",
+        "str"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "조건에 따라 다른 코드를 실행할 때 사용하는 문법은?",
+      "choices": [
+        "if",
+        "for",
+        "class",
+        "import"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Git에서 변경사항을 하나의 기록으로 저장하는 명령어는?",
+      "choices": [
+        "git pull",
+        "git clone",
+        "git commit",
+        "git status"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "Python에서 반복문에 사용하는 단어는?",
+      "choices": [
+        "if",
+        "while",
+        "class",
+        "return"
+      ],
+      "answer": 2
+    }
+  ],
+  "high_score": 6
+}

@@ -1,3 +1,7 @@
+import json
+
+STATE_FILE = "state.json"
+
 class Quiz:
     def __init__(self, question, choices, answer):
         self.question = question
@@ -12,6 +16,14 @@ class Quiz:
 
     def check_answer(self, user_answer):
         return user_answer == self.answer
+    
+    def to_dict(self):
+        return {
+            "question": self.question,
+            "choices": self.choices,
+            "answer": self.answer,
+        }
+
 DEFAULT_QUIZZES = [
     Quiz(
         "Python에서 화면에 내용을 출력할 때 사용하는 함수는?",
@@ -79,6 +91,7 @@ class QuizGame:
         if score > self.high_score:
             self.high_score = score
             print("새로운 최고 점수입니다!")
+            self.save_state()
 
     def show_score(self):
         print(f"현재 최고 점수: {self.high_score}/{len(self.quizzes)}")
@@ -118,7 +131,51 @@ class QuizGame:
 
         new_quiz = Quiz(question, choices, answer)
         self.quizzes.append(new_quiz)
-        print("퀴즈가 추가되었습니다.")                  
+        print("퀴즈가 추가되었습니다.")
+        self.save_state()      
+
+    def save_state(self):
+        quiz_data = []
+
+        for quiz in self.quizzes:
+            quiz_data.append(quiz.to_dict())
+
+        data = {
+            "quizzes": quiz_data,
+            "high_score": self.high_score,
+        }
+
+        try:
+            with open(STATE_FILE, "w", encoding="utf-8") as file:
+                json.dump(data, file, ensure_ascii=False, indent=2)
+        except OSError as error:
+            print(f"데이터 저장 중 오류가 발생했습니다: {error}")
+
+def load_state():
+    try:
+        with open(STATE_FILE, "r", encoding="utf-8") as file:
+            data = json.load(file)
+
+        quizzes = []
+
+        for quiz_data in data["quizzes"]:
+            quiz = Quiz(
+                quiz_data["question"],
+                quiz_data["choices"],
+                quiz_data["answer"],
+            )
+            quizzes.append(quiz)
+
+        high_score = data.get("high_score", 0)
+        return quizzes, high_score
+
+    except FileNotFoundError:
+        return DEFAULT_QUIZZES.copy(), 0
+
+    except (json.JSONDecodeError, KeyError, TypeError, OSError) as error:
+        print(f"저장 데이터를 불러오지 못했습니다: {error}")
+        print("기본 퀴즈로 시작합니다.")
+        return DEFAULT_QUIZZES.copy(), 0                
             
 def show_menu():
     print("=" * 40)
@@ -153,7 +210,9 @@ def get_menu_choice():
 
 
 def main():
-    game = QuizGame(DEFAULT_QUIZZES)
+    quizzes, high_score = load_state()
+    game = QuizGame(quizzes)
+    game.high_score = high_score
 
     while True:
         show_menu()
