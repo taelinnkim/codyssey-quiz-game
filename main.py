@@ -214,21 +214,29 @@ def main():
     game = QuizGame(quizzes)
     game.high_score = high_score
 
-    while True:
-        show_menu()
-        selected_menu = get_menu_choice()
+    try:
+        while True:
+            show_menu()
+            selected_menu = get_menu_choice()
 
-        if selected_menu == 1:
-             game.play_quiz()
-        elif selected_menu == 2:
-            game.add_quiz()
-        elif selected_menu == 3:
-            game.show_quiz_list()
-        elif selected_menu == 4:
-            game.show_score()
-        elif selected_menu == 5:
-            print("퀴즈 게임을 종료합니다.")
-            break
+            if selected_menu == 1:
+                game.play_quiz()
+            elif selected_menu == 2:
+                game.add_quiz()
+            elif selected_menu == 3:
+                game.show_quiz_list()
+            elif selected_menu == 4:
+                game.show_score()
+            elif selected_menu == 5:
+                print("퀴즈 게임을 종료합니다.")
+                break
+
+    except (KeyboardInterrupt, EOFError):
+        print("\n프로그램을 안전하게 종료합니다.")
+
+    finally:
+        game.save_state()
 
 
-main()
+if __name__ == "__main__":
+    main()
